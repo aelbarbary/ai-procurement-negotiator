@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,14 +13,17 @@
             background-color: #f9f9f9;
             color: #333;
         }
+
         header {
             background-color: #4CAF50;
             color: white;
             padding: 20px 0;
         }
+
         main {
             padding: 50px;
         }
+
         footer {
             background-color: #ddd;
             padding: 10px;
@@ -31,7 +33,7 @@
             font-size: 12px;
         }
 
-        /* Fullscreen mode for the df-messenger component */
+        /* Fullscreen style for df-messenger */
         df-messenger {
             position: fixed;
             z-index: 9999;
@@ -46,35 +48,24 @@
             --df-messenger-message-bot-background: #fff;
         }
 
-        /* Ensure no chat bubble is visible */
+        /* Hide chat bubble if you don't want a separate icon */
         df-messenger-chat-bubble {
             display: none;
         }
+
+        /* Styling for the full-screen chat */
+        df-messenger-chat {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
     </style>
 
+    <!-- Include Dialogflow CX Messenger CSS -->
     <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
     <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
 
-    <!-- Chatbot container -->
-    <df-messenger
-        location="us-central1"
-        project-id="nozolan-408714"
-        agent-id="fd5c9e5a-6f1d-4eb3-95de-f237f9d2bc3f"
-        language-code="en"
-        max-query-length="-1"
-        chat-title="Walmart Procurement Negotiator"
-    >
-    </df-messenger>
-
-    <script>
-        // Ensure the chatbot window opens as soon as it's loaded
-        window.addEventListener('dfMessengerLoaded', function() {
-            const messenger = document.querySelector('df-messenger');
-            
-            // Open the chat window programmatically
-            messenger.setAttribute('chat-open', 'true');
-        });
-    </script>
 </head>
 
 <body>
@@ -90,5 +81,38 @@
     <footer>
         <p>&copy; 2024 Ragithm - AI Solutions & Conversational AI</p>
     </footer>
+
+    <!-- Dialogflow Messenger (Always Open) -->
+    <df-messenger
+        location="us-central1"
+        project-id="nozolan-408714"
+        agent-id="fd5c9e5a-6f1d-4eb3-95de-f237f9d2bc3f"
+        language-code="en"
+        max-query-length="-1"
+        expanded="true"                  
+        allow-fullscreen="always"        
+        chat-title="Walmart Procurement Negotiator"
+        placeholder-text="Ask something..."
+    >
+        <df-messenger-chat>
+            <!-- Add attributes if needed, like title, icon, etc. -->
+        </df-messenger-chat>
+    </df-messenger>
+
+    <script>
+        // Wait for the df-messenger component to load before interacting with it
+        window.addEventListener('dfMessengerLoaded', function () {
+            const messenger = document.querySelector('df-messenger');
+
+            // Ensure the chat window is open and fullscreen immediately
+            messenger.setAttribute('chat-open', 'true');
+            messenger.setAttribute('expanded', 'true');
+            messenger.setAttribute('allow-fullscreen', 'always');
+        });
+
+       
+        const dfMessenger = document.querySelector('df-messenger');
+        dfMessenger.renderCustomText('Hello! Welcome to Walmart\'s Virtual Negotiation Assistant. I\'m here to help guide you through the process of finalizing our procurement terms in a smooth and efficient manner. Our goal is to reach an agreement that benefits both parties. We\'ll focus on optimizing discounts, adjusting payment terms, and ensuring fair contract termination periods.', true);
+    </script>
 </body>
 </html>

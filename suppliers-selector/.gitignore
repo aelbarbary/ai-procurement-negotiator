@@ -1,0 +1,7 @@
+# Ignore everything
+*
+# Un-ignore specific files and directories
+!.gitignore
+!lambda_handler.py
+!deploy.sh
+!.env.example

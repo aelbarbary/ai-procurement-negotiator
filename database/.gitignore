@@ -1,0 +1,5 @@
+# Ignore everything
+*
+# Un-ignore specific files and directories
+!.gitignore
+!create_and_populate_suppliers

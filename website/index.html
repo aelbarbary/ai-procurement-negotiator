@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Ragithm - AI Solutions and Conversational AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+        }
+        main {
+            padding: 50px;
+        }
+        footer {
+            background-color: #ddd;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 12px;
+        }
+
+        /* Fullscreen mode for the df-messenger component */
+        df-messenger {
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            --df-messenger-font-color: #000;
+            --df-messenger-font-family: Google Sans;
+            --df-messenger-chat-background: #f3f6fc;
+            --df-messenger-message-user-background: #d3e3fd;
+            --df-messenger-message-bot-background: #fff;
+        }
+
+        /* Ensure no chat bubble is visible */
+        df-messenger-chat-bubble {
+            display: none;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+
+    <!-- Chatbot container -->
+    <df-messenger
+        location="us-central1"
+        project-id="nozolan-408714"
+        agent-id="fd5c9e5a-6f1d-4eb3-95de-f237f9d2bc3f"
+        language-code="en"
+        max-query-length="-1"
+        chat-title="Walmart Procurement Negotiator"
+    >
+    </df-messenger>
+
+    <script>
+        // Ensure the chatbot window opens as soon as it's loaded
+        window.addEventListener('dfMessengerLoaded', function() {
+            const messenger = document.querySelector('df-messenger');
+            
+            // Open the chat window programmatically
+            messenger.setAttribute('chat-open', 'true');
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Ragithm</h1>
+        <p>Your trusted partner for AI Solutions and Conversational AI</p>
+    </header>
+    <main>
+        <p>At Ragithm, we specialize in cutting-edge AI solutions to help businesses automate, innovate, and engage with customers through advanced conversational interfaces.</p>
+        <p>Your setup is working perfectly, and we're excited to work with you!</p>
+        <img src="https://via.placeholder.com/400x200" alt="Sample Image">
+    </main>
+    <footer>
+        <p>&copy; 2024 Ragithm - AI Solutions & Conversational AI</p>
+    </footer>
+</body>
+</html>
